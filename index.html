@@ -4,11 +4,33 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
 <title>Filius Magic × Остров Мечты — Предложение о соавторстве</title>
+
+<!-- Meta теги для красивого превью в соцсетях и Telegram -->
+<meta name="description" content="Уникальное предложение о соавторстве: ИИ-персонажи из мастерской Филиуса в локациях парка «Остров Мечты». Инновационный контент для семейного развлечения." />
+<meta property="og:title" content="Filius Magic × Остров Мечты — Коллаборация" />
+<meta property="og:description" content="Мы создаём уникальные видео с ИИ-персонажами в локациях парка. Новый формат контента для семейного развлечения 🎬✨" />
+<meta property="og:image" content="https://neuroolga.github.io/filius-proposal/Филиус%20.png" />
+<meta property="og:url" content="https://neuroolga.github.io/filius-proposal/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ru_RU" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Filius Magic × Остров Мечты" />
+<meta name="twitter:description" content="Инновационный ИИ-контент для вашего парка развлечений" />
+<meta name="twitter:image" content="https://neuroolga.github.io/filius-proposal/Филиус%20.png" />
+
+<!-- Preload шрифтов для быстрой загрузки -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   /* ─── RESET & BASE ─── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+  }
   body {
     font-family: 'Inter', sans-serif;
     background:
@@ -22,6 +44,15 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    /* Оптимизация скролла */
+    overscroll-behavior-y: none;
+  }
+
+  /* Ускорение анимаций с GPU */
+  .hero-bg-image, .bubble, .particle, .reveal {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   /* Safe area support for notched devices */
@@ -1185,7 +1216,7 @@
       <!-- Card 1 -->
       <div class="portfolio-card reveal">
         <div class="portfolio-thumb">
-          <img src="екатеринбург.jpg" alt="Развлекательный центр" />
+          <img src="екатеринбург.jpg" alt="Развлекательный центр" loading="lazy" />
           <div class="portfolio-play">
             <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
@@ -1203,7 +1234,7 @@
       <!-- Card 2 -->
       <div class="portfolio-card reveal">
         <div class="portfolio-thumb">
-          <img src="https://drive.google.com/thumbnail?id=1_5E3ZYEUpaRI8C64gXcre9VhRsWRQMuF&sz=w1000" alt="Мед. центр Апрелька" />
+          <img src="https://drive.google.com/thumbnail?id=1_5E3ZYEUpaRI8C64gXcre9VhRsWRQMuF&sz=w1000" alt="Мед. центр Апрелька" loading="lazy" />
           <div class="portfolio-play">
             <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
@@ -1221,7 +1252,7 @@
       <!-- Card 3 -->
       <div class="portfolio-card reveal">
         <div class="portfolio-thumb">
-          <img src="https://drive.google.com/thumbnail?id=1o56UCzpl_BY1Pa_sa7GuljH-XwVRCDLa&sz=w1000" alt="Парк Альпак" />
+          <img src="https://drive.google.com/thumbnail?id=1o56UCzpl_BY1Pa_sa7GuljH-XwVRCDLa&sz=w1000" alt="Парк Альпак" loading="lazy" />
           <div class="portfolio-play">
             <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
