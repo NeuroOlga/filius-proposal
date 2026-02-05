@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+<title>Filius Magic × Остров Мечты — Предложение о соавторстве</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  /* ─── RESET & BASE ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background:
+      radial-gradient(ellipse 50% 80% at 0% 20%, rgba(139,92,246,.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 100% 40%, rgba(244,114,182,.2) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 0% 60%, rgba(167,139,250,.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 100% 80%, rgba(251,191,36,.12) 0%, transparent 60%),
+      linear-gradient(180deg, #0f0a1e 0%, #1a1035 50%, #0f0a1e 100%);
+    color: #fff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+  }
+
+  /* Safe area support for notched devices */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+    }
+  }
+
+  /* ─── FLOATING PARTICLES (decorative) ─── */
+  .particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+
+  /* Hide particles on mobile for performance */
+  @media (max-width: 767px) {
+    .particles { display: none; }
+  }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(1px);
+    opacity: 0;
+    animation: drift linear infinite;
+  }
+  .particle:nth-child(1)  { width:12px; height:12px; background:#c084fc; left:8%;  top:100%; animation-duration:18s; animation-delay:0s; }
+  .particle:nth-child(2)  { width:8px;  height:8px;  background:#f472b6; left:22%; top:100%; animation-duration:22s; animation-delay:3s; }
+  .particle:nth-child(3)  { width:16px; height:16px; background:#fbbf24; left:38%; top:100%; animation-duration:26s; animation-delay:1s; }
+  .particle:nth-child(4)  { width:6px;  height:6px;  background:#c084fc; left:55%; top:100%; animation-duration:20s; animation-delay:5s; }
+  .particle:nth-child(5)  { width:10px; height:10px; background:#f472b6; left:72%; top:100%; animation-duration:24s; animation-delay:2s; }
+  .particle:nth-child(6)  { width:14px; height:14px; background:#fbbf24; left:85%; top:100%; animation-duration:21s; animation-delay:4s; }
+  .particle:nth-child(7)  { width:7px;  height:7px;  background:#a78bfa; left:15%; top:100%; animation-duration:19s; animation-delay:7s; }
+  .particle:nth-child(8)  { width:9px;  height:9px;  background:#fb923c; left:65%; top:100%; animation-duration:23s; animation-delay:6s; }
+  .particle:nth-child(9)  { width:11px; height:11px; background:#c084fc; left:45%; top:100%; animation-duration:25s; animation-delay:8s; }
+  .particle:nth-child(10) { width:5px;  height:5px;  background:#f472b6; left:90%; top:100%; animation-duration:17s; animation-delay:9s; }
+
+  @keyframes drift {
+    0%   { transform: translateX(0) translateY(0)  rotate(0deg);   opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateX(60px) translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── SECTION WRAPPER ─── */
+  section { position: relative; z-index: 1; }
+
+  /* ═══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ */
+  .hero {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    align-items: center;
+    gap: 40px;
+    padding: 100px 60px 120px;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-bg-image {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Floating bubbles */
+  .hero-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: bubble-rise linear infinite;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.4), rgba(192,132,252,.2));
+    box-shadow: inset 0 0 20px rgba(255,255,255,.3), 0 0 20px rgba(192,132,252,.2);
+  }
+
+  .bubble:nth-child(1)  { width: 90px;  height: 90px;  left: 10%; top: 200px;  animation-duration: 25s; animation-delay: 0s; }
+  .bubble:nth-child(2)  { width: 70px;  height: 70px;  left: 25%; top: 800px;  animation-duration: 28s; animation-delay: 2s; }
+  .bubble:nth-child(3)  { width: 120px; height: 120px; left: 45%; top: 1500px; animation-duration: 32s; animation-delay: 1s; }
+  .bubble:nth-child(4)  { width: 80px;  height: 80px;  left: 65%; top: 400px;  animation-duration: 26s; animation-delay: 3s; }
+  .bubble:nth-child(5)  { width: 100px; height: 100px; left: 80%; top: 1200px; animation-duration: 30s; animation-delay: 0.5s; }
+  .bubble:nth-child(6)  { width: 75px;  height: 75px;  left: 15%; top: 2000px; animation-duration: 27s; animation-delay: 4s; }
+  .bubble:nth-child(7)  { width: 85px;  height: 85px;  left: 35%; top: 600px;  animation-duration: 33s; animation-delay: 1.5s; }
+  .bubble:nth-child(8)  { width: 95px;  height: 95px;  left: 55%; top: 1800px; animation-duration: 24s; animation-delay: 2.5s; }
+  .bubble:nth-child(9)  { width: 110px; height: 110px; left: 75%; top: 1000px; animation-duration: 29s; animation-delay: 3.5s; }
+  .bubble:nth-child(10) { width: 80px;  height: 80px;  left: 90%; top: 2400px; animation-duration: 27s; animation-delay: 1s; }
+  .bubble:nth-child(11) { width: 78px;  height: 78px;  left: 5%;  top: 2800px; animation-duration: 31s; animation-delay: 5s; }
+  .bubble:nth-child(12) { width: 88px;  height: 88px;  left: 50%; top: 3200px; animation-duration: 34s; animation-delay: 2.5s; }
+  .bubble:nth-child(13) { width: 72px;  height: 72px;  left: 70%; top: 3600px; animation-duration: 28s; animation-delay: 6s; }
+  .bubble:nth-child(14) { width: 92px;  height: 92px;  left: 30%; top: 4000px; animation-duration: 35s; animation-delay: 1.8s; }
+  .bubble:nth-child(15) { width: 82px;  height: 82px;  left: 85%; top: 4400px; animation-duration: 30s; animation-delay: 4.5s; }
+
+  @keyframes bubble-rise {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.9);
+      opacity: 0.5;
+    }
+    25% {
+      transform: translateY(-30px) translateX(15px) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-60px) translateX(25px) scale(0.95);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translateY(-30px) translateX(10px) scale(1);
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(0) translateX(0) scale(0.9);
+      opacity: 0.5;
+    }
+  }
+
+  .hero-logo {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.7);
+    margin-bottom: 48px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.4);
+  }
+  .hero-logo span {
+    color: #c084fc;
+    text-shadow: 0 0 20px rgba(192,132,252,.6);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 800;
+    line-height: 1.08;
+    max-width: 860px;
+    background: linear-gradient(135deg, #fff 0%, #e9d5ff 40%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 20px rgba(139,92,246,.4));
+  }
+
+  .hero-sub {
+    margin-top: 28px;
+    font-size: clamp(16px, 2.2vw, 20px);
+    font-weight: 400;
+    color: rgba(255,255,255,.75);
+    max-width: 580px;
+    line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0,0,0,.5);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 44px;
+    padding: 10px 22px;
+    border-radius: 40px;
+    background: rgba(192,132,252,.12);
+    border: 1px solid rgba(192,132,252,.25);
+    font-size: 14px;
+    font-weight: 500;
+    color: #e9d5ff;
+  }
+  .hero-badge .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #c084fc;
+    box-shadow: 0 0 8px #c084fc;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: .5; transform: scale(.85); }
+  }
+
+  /* ═══════════════════════════════════════════
+     WHO WE ARE
+     ═══════════════════════════════════════════ */
+  .section-who {
+    padding: 120px 24px;
+    background: transparent;
+  }
+
+  .inner { max-width: 1060px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c084fc;
+    margin-bottom: 16px;
+  }
+
+  .section-who h2 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    max-width: 600px;
+    line-height: 1.2;
+    margin-bottom: 40px;
+  }
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .who-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 20px;
+    padding: 32px 28px;
+    backdrop-filter: blur(4px);
+    transition: border-color .3s, transform .3s;
+  }
+  .who-card:hover {
+    border-color: rgba(192,132,252,.3);
+    transform: translateY(-4px);
+  }
+  .who-card .icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  .who-card .icon.purple  { background: rgba(192,132,252,.15); }
+  .who-card .icon.pink    { background: rgba(244,114,182,.15); }
+  .who-card .icon.gold    { background: rgba(251,191,36,.15);  }
+  .who-card .icon.violet  { background: rgba(167,139,250,.15); }
+
+  .who-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .who-card p  { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+  /* ═══════════════════════════════════════════
+     IDEA / HOW IT WORKS
+     ═══════════════════════════════════════════ */
+  .section-idea {
+    padding: 120px 24px;
+    background: transparent;
+  }
+
+  .idea-header { text-align: center; margin-bottom: 72px; }
+  .idea-header h2 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.2;
+  }
+  .idea-header p {
+    margin-top: 18px;
+    color: rgba(255,255,255,.5);
+    font-size: 16px;
+    max-width: 560px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* Steps timeline */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #c084fc, #f472b6, #fbbf24);
+    border-radius: 3px;
+  }
+
+  .step {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    padding-bottom: 44px;
+    position: relative;
+  }
+  .step:last-child { padding-bottom: 0; }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800;
+    position: relative; z-index: 1;
+  }
+  .step-number.s1 { background: linear-gradient(135deg, #8b5cf6, #c084fc); }
+  .step-number.s2 { background: linear-gradient(135deg, #c084fc, #f472b6); }
+  .step-number.s3 { background: linear-gradient(135deg, #f472b6, #fb923c); }
+  .step-number.s4 { background: linear-gradient(135deg, #fb923c, #fbbf24); }
+
+  .step-content h3 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+  .step-content p  { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.6; max-width: 520px; }
+
+  /* ═══════════════════════════════════════════
+     BENEFITS
+     ═══════════════════════════════════════════ */
+  .section-benefits {
+    padding: 120px 24px;
+    background: transparent;
+  }
+
+  .benefits-header { text-align: center; margin-bottom: 64px; }
+  .benefits-header h2 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .benefits-header p {
+    margin-top: 14px;
+    color: rgba(255,255,255,.45);
+    font-size: 16px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .benefit-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 22px;
+    padding: 36px 30px;
+    transition: border-color .3s, transform .3s;
+  }
+  .benefit-card:hover {
+    border-color: rgba(251,191,36,.25);
+    transform: translateY(-3px);
+  }
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    opacity: .12;
+  }
+  .benefit-card:nth-child(1)::before { background: #8b5cf6; }
+  .benefit-card:nth-child(2)::before { background: #f472b6; }
+  .benefit-card:nth-child(3)::before { background: #fbbf24; }
+  .benefit-card:nth-child(4)::before { background: #fb923c; }
+  .benefit-card:nth-child(5)::before { background: #c084fc; }
+  .benefit-card:nth-child(6)::before { background: #a78bfa; }
+
+  .benefit-card .benefit-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 18px;
+    background: rgba(255,255,255,.06);
+  }
+  .benefit-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .benefit-card p  { font-size: 14px; color: rgba(255,255,255,.48); line-height: 1.6; }
+
+  /* ═══════════════════════════════════════════
+     PORTFOLIO
+     ═══════════════════════════════════════════ */
+  .section-portfolio {
+    padding: 120px 24px;
+    background: transparent;
+  }
+
+  .portfolio-header { text-align: center; margin-bottom: 56px; }
+  .portfolio-header h2 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+  }
+  .portfolio-header p {
+    margin-top: 12px;
+    color: rgba(255,255,255,.45);
+    font-size: 16px;
+    max-width: 560px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .portfolio-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 22px;
+    overflow: hidden;
+    transition: border-color .3s, transform .3s;
+  }
+  .portfolio-card:hover {
+    border-color: rgba(192,132,252,.3);
+    transform: translateY(-4px);
+  }
+
+  .portfolio-thumb {
+    height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+  .portfolio-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(30,16,64,.7), rgba(45,27,105,.7));
+  }
+  .portfolio-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .portfolio-play {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    border: 2px solid rgba(255,255,255,.25);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .3s, transform .2s;
+    position: relative;
+    z-index: 2;
+  }
+  .portfolio-card:hover .portfolio-play {
+    background: rgba(192,132,252,.35);
+    transform: scale(1.08);
+  }
+  .portfolio-play svg { width: 22px; height: 22px; margin-left: 3px; }
+
+  .portfolio-info { padding: 24px 24px 28px; }
+  .portfolio-info .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c084fc;
+    margin-bottom: 8px;
+  }
+  .portfolio-info h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .portfolio-info p  { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5; margin-bottom: 18px; }
+
+  .btn-watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 40px;
+    background: rgba(192,132,252,.15);
+    border: 1px solid rgba(192,132,252,.3);
+    color: #e9d5ff;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .3s, border-color .3s;
+  }
+  .btn-watch:hover {
+    background: rgba(192,132,252,.28);
+    border-color: rgba(192,132,252,.5);
+  }
+  .btn-watch svg { width: 14px; height: 14px; }
+
+  /* ═══════════════════════════════════════════
+     CTA / CONTACT
+     ═══════════════════════════════════════════ */
+  .section-cta {
+    padding: 100px 24px 80px;
+    text-align: center;
+    background: transparent;
+  }
+
+  .section-cta .section-label {
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .section-cta h2 {
+    font-size: clamp(32px, 5.5vw, 56px);
+    font-weight: 800;
+    line-height: 1.15;
+    max-width: 800px;
+    margin: 0 auto 32px;
+    background: linear-gradient(135deg, #fff 0%, #e9d5ff 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-cta p {
+    color: rgba(255,255,255,.7);
+    font-size: 19px;
+    max-width: 680px;
+    margin: 0 auto 100px !important;
+    line-height: 1.65;
+  }
+
+  .contacts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    max-width: 100%;
+    margin: 0 auto 40px;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    border-radius: 50px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .3s, border-color .3s, transform .2s;
+  }
+  .contact-btn:hover {
+    background: rgba(192,132,252,.2);
+    border-color: rgba(192,132,252,.4);
+    transform: translateY(-2px);
+  }
+  .contact-btn .cb-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .contact-btn.phone  .cb-icon { background: rgba(52,211,153,.2); }
+  .contact-btn.tg     .cb-icon { background: rgba(56,153,244,.2); }
+  .contact-btn.wa     .cb-icon { background: rgba(34,197,94,.2);  }
+
+  .cta-site {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 40px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #8b5cf6, #c084fc);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 10px 35px rgba(139,92,246,.4);
+    transition: box-shadow .3s, transform .2s;
+  }
+  .cta-site:hover {
+    box-shadow: 0 14px 45px rgba(139,92,246,.55);
+    transform: translateY(-2px);
+  }
+
+  /* ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ */
+  footer {
+    text-align: center;
+    padding: 36px 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,.2);
+    border-top: 1px solid rgba(255,255,255,.06);
+    background: transparent;
+  }
+
+  /* ─── RESPONSIVE ─── */
+
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .who-card:hover,
+    .benefit-card:hover,
+    .portfolio-card:hover {
+      transform: none;
+    }
+
+    .portfolio-card:active {
+      transform: translateY(-2px);
+    }
+
+    .contact-btn:hover,
+    .btn-watch:hover,
+    .cta-site:hover {
+      transform: none;
+    }
+
+    .contact-btn:active,
+    .btn-watch:active,
+    .cta-site:active {
+      transform: translateY(-1px);
+    }
+  }
+
+  /* Tablet (768px - 1024px) */
+  @media (max-width: 1024px) {
+    .hero {
+      grid-template-columns: 1fr 300px;
+      gap: 50px;
+      padding: 70px 32px 90px;
+    }
+
+    .hero-content {
+      max-width: 100%;
+    }
+
+    .hero-bg-image {
+      max-height: 350px;
+    }
+
+    .bubble {
+      display: block;
+    }
+
+    .section-who, .section-idea, .section-benefits, .section-portfolio {
+      padding: 100px 32px;
+    }
+
+    .section-cta {
+      padding: 100px 32px 80px;
+    }
+
+    .who-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .steps {
+      max-width: 600px;
+    }
+  }
+
+  /* Mobile landscape & small tablet (640px - 767px) */
+  @media (max-width: 767px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 60px 24px 70px;
+      text-align: center;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .hero-logo {
+      font-size: 13px;
+      letter-spacing: 3px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 8vw, 48px);
+      line-height: 1.12;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 3.5vw, 18px);
+      max-width: 100%;
+      margin-top: 20px;
+    }
+
+    .hero-badge {
+      font-size: 13px;
+      padding: 8px 18px;
+      margin-top: 28px;
+    }
+
+    .hero-bg-image {
+      max-height: 280px;
+    }
+
+    .hero-bubbles .bubble {
+      display: block;
+    }
+
+    .section-who, .section-idea, .section-benefits, .section-portfolio {
+      padding: 80px 24px;
+    }
+
+    .section-cta {
+      padding: 70px 24px 50px;
+    }
+
+    .section-cta .section-label {
+      margin-bottom: 20px;
+    }
+
+    .section-cta h2 {
+      margin-bottom: 24px;
+      font-size: clamp(28px, 7vw, 48px);
+    }
+
+    .section-cta p {
+      font-size: 17px;
+      margin-bottom: 72px !important;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+    }
+
+    .who-grid, .benefits-grid, .portfolio-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .steps {
+      max-width: 100%;
+    }
+
+    .steps::before {
+      left: 22px;
+    }
+
+    .step {
+      gap: 20px;
+      padding-bottom: 36px;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      font-size: 18px;
+    }
+
+    .step-content h3 {
+      font-size: 17px;
+    }
+
+    .step-content p {
+      font-size: 13px;
+    }
+
+    .contacts {
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      max-width: 100%;
+      margin: 0 auto 36px;
+    }
+
+    .contact-btn {
+      min-width: 280px;
+      justify-content: center;
+      padding: 16px 24px;
+    }
+
+    .cta-site {
+      min-width: 280px;
+      justify-content: center;
+    }
+
+    .portfolio-thumb {
+      height: 200px;
+    }
+
+    footer {
+      padding: 28px 24px;
+      font-size: 12px;
+    }
+  }
+
+  /* Small mobile (480px and below) */
+  @media (max-width: 480px) {
+    .hero {
+      padding: 40px 20px 50px;
+    }
+
+    .hero h1 {
+      font-size: clamp(24px, 9vw, 36px);
+      line-height: 1.15;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      margin-top: 16px;
+    }
+
+    .hero-badge {
+      font-size: 12px;
+      padding: 7px 16px;
+      margin-top: 24px;
+    }
+
+    .hero-bg-image {
+      max-height: 240px;
+    }
+
+    .section-who, .section-idea, .section-benefits, .section-portfolio {
+      padding: 60px 20px;
+    }
+
+    .section-cta {
+      padding: 60px 20px 50px;
+    }
+
+    .section-cta .section-label {
+      margin-bottom: 18px;
+    }
+
+    .section-cta h2 {
+      font-size: clamp(24px, 7vw, 38px);
+      margin-bottom: 20px;
+    }
+
+    .section-cta p {
+      font-size: 16px;
+      margin-bottom: 64px !important;
+    }
+
+    .who-card, .benefit-card {
+      padding: 24px 20px;
+    }
+
+    .who-card .icon, .benefit-card .benefit-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .who-card h3, .benefit-card h3 {
+      font-size: 16px;
+    }
+
+    .who-card p, .benefit-card p {
+      font-size: 13px;
+    }
+
+    .step {
+      gap: 16px;
+      padding-bottom: 32px;
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      font-size: 16px;
+    }
+
+    .steps::before {
+      left: 20px;
+      width: 2px;
+    }
+
+    .portfolio-thumb {
+      height: 180px;
+    }
+
+    .portfolio-info {
+      padding: 20px 20px 24px;
+    }
+
+    .portfolio-info h3 {
+      font-size: 16px;
+    }
+
+    .portfolio-info p {
+      font-size: 12px;
+    }
+
+    .contacts {
+      margin-bottom: 32px;
+      gap: 12px;
+    }
+
+    .contact-btn {
+      font-size: 15px;
+      padding: 15px 22px;
+      min-width: 260px;
+    }
+
+    .cta-site {
+      font-size: 16px;
+      padding: 16px 32px;
+      min-width: 260px;
+    }
+  }
+
+  /* Very small screens (360px and below) */
+  @media (max-width: 360px) {
+    .hero h1 {
+      font-size: 22px;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+    }
+
+    .section-who, .section-idea, .section-benefits, .section-portfolio {
+      padding: 50px 16px;
+    }
+
+    .section-cta {
+      padding: 50px 16px 40px;
+    }
+
+    .who-card, .benefit-card {
+      padding: 20px 16px;
+    }
+
+    .portfolio-info {
+      padding: 16px 16px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating particles -->
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<!-- Floating bubbles across entire site -->
+<div class="hero-bubbles">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo"><span>Filius Magic</span> — предложение о соавторстве</div>
+    <h1>Новый формат контента для семейного развлечения</h1>
+    <p class="hero-sub">
+      Мы создаём уникальные видео, в которых персонажи из мастерской Филиуса появляются в ваших локациях — с помощью ИИ, со сценарием и с душой.
+    </p>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Предложение специально для «Острова Мечты»
+    </div>
+  </div>
+
+  <div class="hero-image-wrapper">
+    <img src="Филиус .png" alt="Кот Филиус" class="hero-bg-image" />
+  </div>
+</section>
+
+<!-- ═══ WHO WE ARE ═══ -->
+<section class="section-who">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-label">О нас</span>
+      <h2>Кто такие Filius Magic?</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <div class="icon purple">🐱</div>
+        <h3>Кот Филиус</h3>
+        <p>Наш главный персонаж — кот Филиус. Он живёт в мастерских и путешествует по интересным местам, создавая историю вокруг себя.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="icon pink">🎨</div>
+        <h3>Мы — сеть мастерских</h3>
+        <p>У нас шесть мастерских в разных городах. В каждой дети сами создают игрушек — живых, тёплых, своих.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="icon gold">🎬</div>
+        <h3>Проект «Путешествия»</h3>
+        <p>Мы запустили проект: Филиус посещает развлекательные центры и парки, каждый раз с новым захватывающим сюжетом.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="icon violet">✨</div>
+        <h3>ИИ-технология</h3>
+        <p>Мы накладываем персонажей в реальные локации с помощью ИИ — результат выглядит как профессиональная анимация.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="section-idea">
+  <div class="inner">
+    <div class="idea-header reveal">
+      <span class="section-label">Как это работает</span>
+      <h2>Как выглядит наше сотрудничество</h2>
+      <p>Четыре шага от идеи до готового контента, который цепляет зрителей.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-number s1">1</div>
+        <div class="step-content">
+          <h3>Снимаем локации «Острова Мечты»</h3>
+          <p>Наша команда приезжает и снимает видео в самых зрелищных тематических зонах парка — Деревня Смурфиков, Замок Снежной королевы и другие.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-number s2">2</div>
+        <div class="step-content">
+          <h3>Придумываем сюжет</h3>
+          <p>Мы создаём увлекательную историю про кота Филиуса — как он оказался на «Острове Мечты», что его удивил и в каких приключениях побывал.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-number s3">3</div>
+        <div class="step-content">
+          <h3>Накладываем персонажей через ИИ</h3>
+          <p>Наша технология превращает обычную запись в захватывающее видео с живыми персонажами внутри ваших тематических зон.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-number s4">4</div>
+        <div class="step-content">
+          <h3>Размещаем ролик в соавторстве</h3>
+          <p>Готовый ролик с брендингом обеих компаний размещается в соц сетях. Контент работает на вас и на нас одновременно.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENEFITS ═══ -->
+<section class="section-benefits">
+  <div class="inner">
+    <div class="benefits-header reveal">
+      <span class="section-label">Преимущества</span>
+      <h2>Почему это выгодно для «Острова Мечты»</h2>
+      <p>Мы подготовили всё — вам остаётся только опубликовать.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🎯</div>
+        <h3>Уникальный контент без затрат</h3>
+        <p>Вся продакшн-работа — наша. Сценарий, съёмка, постпродакшн — всё включено. Вы получаете готовый профессиональный ролик, не привлекая свою команду.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">📈</div>
+        <h3>Новая аудитория и кросс-платформенный охват</h3>
+        <p>Публикация в формате соавторства усиливает эффект: ваша огромная аудитория видит инновационный контент, а наши каналы помогают донести его до тех, кто ищет интересные детские локации.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🧒</div>
+        <h3>Идеальный формат для семей</h3>
+        <p>Детский контент с ИИ-персонажами — это то, что родители запоминают и перепостят. Эмоциональная связь с брендом парка укрепляется.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🤖</div>
+        <h3>Инновационный формат</h3>
+        <p>ИИ-персонажи в реальных локациях парка — это новый тренд контента. Одним из первых его использовать — значит задавать планку.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">💎</div>
+        <h3>Профессиональное качество</h3>
+        <p>Мы уже реализовали несколько успешных проектов этого типа. Посмотрите наше портфолио ниже — результат говорит за себя.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌟</div>
+        <h3>Вирусный потенциал</h3>
+        <p>Контент «живые персонажи в парке» провоцирует шеринг: люди делятся им с детьми, друзьями, в группах для родителей.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section class="section-portfolio">
+  <div class="inner">
+    <div class="portfolio-header reveal">
+      <span class="section-label">Портфолио</span>
+      <h2>Уже сделанные ролики</h2>
+      <p>Примеры нашей работы с ИИ-персонажами в реальных локациях. Оценьте качество сами.</p>
+    </div>
+    <div class="portfolio-grid">
+      <!-- Card 1 -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb">
+          <img src="екатеринбург.jpg" alt="Развлекательный центр" />
+          <div class="portfolio-play">
+            <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <span class="tag">Развлечения</span>
+          <h3>Развлекательный центр</h3>
+          <p>Кот Филиус в развлекательном центре — полный ролик с живым сюжетом.</p>
+          <a href="https://vk.ru/clip-208193096_456241458?c=1" target="_blank" rel="noopener" class="btn-watch">
+            Посмотреть ролик
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb">
+          <img src="https://drive.google.com/thumbnail?id=1_5E3ZYEUpaRI8C64gXcre9VhRsWRQMuF&sz=w1000" alt="Мед. центр Апрелька" />
+          <div class="portfolio-play">
+            <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <span class="tag">Медицина</span>
+          <h3>Мед. центр «Апрелька»</h3>
+          <p>Проект для детского медицинского центра — сделали визит к врачу весёлым и запоминающимся.</p>
+          <a href="https://drive.google.com/file/d/1_5E3ZYEUpaRI8C64gXcre9VhRsWRQMuF/view?usp=drivesdk" target="_blank" rel="noopener" class="btn-watch">
+            Посмотреть ролик
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb">
+          <img src="https://drive.google.com/thumbnail?id=1o56UCzpl_BY1Pa_sa7GuljH-XwVRCDLa&sz=w1000" alt="Парк Альпак" />
+          <div class="portfolio-play">
+            <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <span class="tag">Развлечения</span>
+          <h3>Парк Альпак</h3>
+          <p>Ролик с приключениями Филиуса в парке Альпак — яркий и эмоциональный.</p>
+          <a href="https://drive.google.com/file/d/1o56UCzpl_BY1Pa_sa7GuljH-XwVRCDLa/view?usp=drivesdk" target="_blank" rel="noopener" class="btn-watch">
+            Посмотреть ролик
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="section-cta">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-label">Давайте начнём</span>
+    </div>
+    <h2 class="reveal">Готовы создать что-то невероятное вместе?</h2>
+    <p class="reveal">Давайте сделаем совместную коллаборацию — что-то по-настоящему взрывное в ИИ-контенте. От вас нужно только подтверждение, всё остальное берём на себя.</p>
+
+    <div class="contacts reveal">
+      <a href="tel:+79311057033" class="contact-btn phone">
+        <span class="cb-icon">📞</span>
+        +7 (931) 105-70-33
+      </a>
+      <a href="https://t.me/FiliussMagic" target="_blank" rel="noopener" class="contact-btn tg">
+        <span class="cb-icon">✈️</span>
+        Telegram
+      </a>
+      <a href="https://wa.me/79316083352" target="_blank" rel="noopener" class="contact-btn wa">
+        <span class="cb-icon">💬</span>
+        WhatsApp
+      </a>
+    </div>
+
+    <a href="https://filiusmagic.ru" target="_blank" rel="noopener" class="cta-site reveal">
+      Посетить наш сайт →
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  © 2025 Filius Magic. Предложение о соавторстве для «Острова Мечты».
+</footer>
+
+<!-- ═══ SCROLL REVEAL SCRIPT ═══ -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
